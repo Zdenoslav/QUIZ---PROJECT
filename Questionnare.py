@@ -170,6 +170,7 @@ class Questionnaire(Frame):
 
     def clear_response(self):
         print('Clear button works')
+        print('ho')
 
 
 
