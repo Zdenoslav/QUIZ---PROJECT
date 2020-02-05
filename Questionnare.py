@@ -11,6 +11,8 @@ class Questionnaire(Frame):
         self.create_probs()
         self.create_comments()
         self.entry_name()
+        self.create_butts()
+        self.clear_response()
         self.quit()
 
     def create_prog_select(self):
@@ -137,8 +139,8 @@ class Questionnaire(Frame):
 
     def create_comments(self):
 
-        Text = Label(self, text="Comments about Teamwork: ", font=('MS', 8,'bold'))
-        Text.grid(row=12, column=0, columnspan=2)
+        lblStrAgr = Label(self, text='Comments about Teamwork:', font=('MS', 8, 'bold'))
+        lblStrAgr.grid(row=12, column=0, columnspan=2)
 
         self.txtComment = Text(self, height=3, width=40)
 
@@ -150,8 +152,27 @@ class Questionnaire(Frame):
 
     def entry_name(self):
 
+        lblStrAgr = Label(self, text='Name(optional)', font=('MS', 8, 'bold'))
+        lblStrAgr.grid(row=15, column=2, columnspan=2)
+
         self.entName = Entry(self)
-        self.entName.grid(row=15, column=3, columnspan=2, sticky=E)
+        self.entName.grid(row=15, column=4, columnspan=2, sticky=E)
+
+    def create_butts(self):
+
+        butSubmit= Button(self, text='Submit',font=('MS', 8,'bold'))
+    #    butSubmit['command']=self.storeResponse        #Note: no () after themethod
+        butSubmit.grid(row=16, column=2, columnspan=2)
+
+        butClear= Button(self, text='Clear',font=('MS', 8,'bold'))
+        butClear['command']=self.clear_response()
+        butClear.grid(row=16, column=5, columnspan=2)
+
+    def clear_response(self):
+        print('Clear button works')
+
+
+
 
     def quit(self):
         global root
