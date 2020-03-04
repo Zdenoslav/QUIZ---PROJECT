@@ -19,6 +19,7 @@ class Database:
     def remove(self, id):
         self.cur.execute("DELETE FROM Questions2 WHERE id=?", (id,))
         self.conn.commit()
+        
     def update(self, id, question, answerA, answerB, answerC, answerD):
         self.cur.execute("UPDATE Questions2 SET question = ?, answerA = ?, answerB = ?, answerC = ?, answerD = ?," (question, answerA, answerB, answerC, answerD, id))
         self.conn.commit()
