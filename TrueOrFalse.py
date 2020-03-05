@@ -9,14 +9,23 @@ def populate_list():
     for row in db.fetch():
         parts_list.insert(END, row)
 
-def add_item():
+def setIncorrect():
+    correct2 = correct.get()
+    if correct2 == 'TRUE':
+        incorrect = 'FALSE'
+        add_item(correct2, incorrect)
+    else:
+        incorrect = 'TRUE'
+        add_item(correct2, incorrect)
+
+def add_item(correct3, incorrect):
     #validationvarQ1
-    if part_text.get() == '' or varQ1.get() == '':
+    if part_text.get() == '' or correct.get() == '':
         messagebox.showerror('Required Fields', 'Please include all fields')
         return
-    db.insert(part_text.get(), varQ1.get(), varQ2.get())
+    db.insert(part_text.get(), correct3, incorrect)
     parts_list.delete(0, END)
-    parts_list.insert(END, (part_text.get(),varQ1.get(), varQ2.get()))
+    parts_list.insert(END, (part_text.get(), correct3, incorrect))
     populate_list()
 
 def select_item(event):
@@ -39,18 +48,20 @@ def update_item():
 # create window object
 app= Tk()
 
+#corect answer
+correct = StringVar()
+incorrect = ''
+
 #radiobuttons
-varQ1 = StringVar()
-varQ2 = StringVar()
 
 lblR1Q1 = Label(app, text="True", font=('bold', 14), pady=20)
 lblR1Q1.grid(row=0, column=3,sticky=E)
-R1Q1 = Radiobutton(variable=varQ1, value='TRUE')
+R1Q1 = Radiobutton(variable=correct, value='TRUE')
 R1Q1.grid(row=1, column=3, sticky=E)
 
 lblR2Q1 = Label(app, text="False", font=('bold', 14), pady=20)
 lblR2Q1.grid(row=0, column=4, sticky=E)
-R2Q1 = Radiobutton(variable= varQ1, value='FALSE')
+R2Q1 = Radiobutton(variable=correct, value='FALSE')
 R2Q1.grid(row=1, column=4, sticky=E)
 
 # Part
@@ -62,7 +73,7 @@ part_entry.grid(row=0, column=1)
 
 
 #Buttons
-add_btn = Button(app, text='Add Question', width=12, command=add_item)
+add_btn = Button(app, text='Add Question', width=12, command=setIncorrect)
 add_btn.grid(row=21, column=0, pady=20)
 
 #Buttons
