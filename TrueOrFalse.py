@@ -10,8 +10,8 @@ def populate_list():
         parts_list.insert(END, row)
 
 def add_item():
-    #validation
-    if part_text.get() == '':
+    #validationvarQ1
+    if part_text.get() == '' or varQ1.get() == '':
         messagebox.showerror('Required Fields', 'Please include all fields')
         return
     db.insert(part_text.get(), varQ1.get(), varQ2.get())
