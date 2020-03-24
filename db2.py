@@ -26,5 +26,3 @@ class Database:
 
     def __del__(self):
         self.conn.close()
-
-db = Database('questions2.db')

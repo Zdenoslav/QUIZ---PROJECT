@@ -36,6 +36,7 @@ def select_item(event):
         answerC_entry.insert(END, selected_item[4])
         answerD_entry.delete(0, END)
         answerD_entry.insert(END, selected_item[5])
+
     except IndexError:
      pass
 
@@ -62,7 +63,7 @@ app= Tk()
 question = StringVar()
 question_label = Label(app, text='MULTIPLE CHOICE', font=('bold', 14), pady=20)
 question_label.grid(row=0, column=0, sticky=W)
-question_entry = Entry(app, textvariable=question)
+question_entry = Entry(app, textvariable=question, width=30,)
 question_entry.grid(row=0, column=1)
 
 #Question fields
@@ -96,24 +97,24 @@ question_list= Listbox(app, height=8, width=50, border=0)
 question_list.grid(row=3, column=0, columnspan=3, rowspan=6, pady=20, padx=20)
 #Create scrollbar
 scrollbar = Scrollbar(app)
-scrollbar.grid(row=3, column=3)
+scrollbar.grid(row=5, column=2)
 
 #set scroll to listbox
 question_list.configure(yscrollcommand=scrollbar.set)
 scrollbar.configure(command=question_list.yview)
 
 #Buttons
-add_btn = Button(app, text='Add Question', width=12, command=add_item)
+add_btn = Button(app, text='Add Question', width=14, command=add_item)
 add_btn.grid(row=21, column=0, pady=20)
 
-remove_btn = Button(app, text='Remove Question', width=12, command=remove_item)
+remove_btn = Button(app, text='Remove Question', width=14, command=remove_item)
 remove_btn.grid(row=21, column=1, pady=20)
 
-clear_btn = Button(app, text='Clear Fields', width=12, command=clear_text)
+clear_btn = Button(app, text='Clear Fields', width=14, command=clear_text)
 clear_btn.grid(row=21, column=2, pady=20)
 
-update_btn = Button(app, text='Update Fields', width=12, command=update_item)
-update_btn.grid(row=21, column=3, pady=20)
+update_btn = Button(app, text='Update Fields', width=14, command=update_item)
+update_btn.grid(row=21, column=3, pady=30)
 
 #bind select
 question_list.bind('<<ListboxSelect>>', select_item)

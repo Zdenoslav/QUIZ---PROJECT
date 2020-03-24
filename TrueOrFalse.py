@@ -54,43 +54,35 @@ incorrect = ''
 
 #radiobuttons
 
-lblR1Q1 = Label(app, text="True", font=('bold', 14), pady=20)
-lblR1Q1.grid(row=0, column=3,sticky=E)
-R1Q1 = Radiobutton(variable=correct, value='TRUE')
-R1Q1.grid(row=1, column=3, sticky=E)
+lblR1Q1 = Label(app, text="True", font=('bold', 14), padx=10, pady= 10)
+lblR1Q1.grid(row=0, column=4,sticky=E)
+R1Q1 = Radiobutton(variable=correct, value='TRUE', padx=20, pady=10)
+R1Q1.grid(row=1, column=4, sticky=E)
 
-lblR2Q1 = Label(app, text="False", font=('bold', 14), pady=20)
-lblR2Q1.grid(row=0, column=4, sticky=E)
-R2Q1 = Radiobutton(variable=correct, value='FALSE')
-R2Q1.grid(row=1, column=4, sticky=E)
+lblR2Q1 = Label(app, text="False", font=('bold', 14), padx=20, pady=10)
+lblR2Q1.grid(row=0, column=5, sticky=E)
+R2Q1 = Radiobutton(variable=correct, value='FALSE', padx=20, pady=10)
+R2Q1.grid(row=1, column=5, sticky=E)
 
 # Part
 part_text = StringVar()
-part_label = Label(app, text='TRUE OR FALSE', font=('bold', 14), pady=20)
+part_label = Label(app, text='TRUE OR FALSE', font=('bold', 14), padx=20)
 part_label.grid(row=0, column=0, sticky=W)
-part_entry = Entry(app, textvariable=part_text)
-part_entry.grid(row=0, column=1)
-
-
-#Buttons
-add_btn = Button(app, text='Add Question', width=12, command=setIncorrect)
-add_btn.grid(row=21, column=0, pady=20)
+part_entry = Entry(app, textvariable=part_text, width=30)
+part_entry.grid(row=1, column=0, sticky=W, padx=20)
 
 #Buttons
-remove_btn = Button(app, text='Remove Question', width=12, command=remove_item)
-remove_btn.grid(row=21, column=1, pady=20)
-
-
+add_btn = Button(app, text='Add Question', width=20, command=setIncorrect)
+add_btn.grid(row=21, column=0, padx=20, pady=20)
 #Buttons
-update_btn = Button(app, text='Update Question', width=12, command=update_item)
-update_btn.grid(row=21, column=2, pady=20)
-
+remove_btn = Button(app, text='Remove Question', width=20, command=remove_item)
+remove_btn.grid(row=21, column=1, padx=20, pady=20)
 #list_box
-parts_list= Listbox(app, height=8, width=50, border=0)
-parts_list.grid(row=3, column=0, columnspan=3, rowspan=6, pady=20, padx=20)
+parts_list= Listbox(app, height=10, width=50, border=0)
+parts_list.grid(row=3, column=0, columnspan=4, rowspan=4, pady=20, padx=20)
 #Create scrollbar
-scrollbar = Scrollbar(app)
-scrollbar.grid(row=3, column=3)
+scrollbar = Scrollbar(app,)
+scrollbar.grid(row=4, column=3, pady=10)
 
 #set scroll to listbox
 parts_list.configure(yscrollcommand=scrollbar.set)
@@ -102,9 +94,8 @@ parts_list.bind('<<ListboxSelect>>', select_item)
 #populate data
 populate_list()
 
-
-app.title('Pool')
-app.geometry('700x350')
+app.title('True or False')
+app.geometry('800x450')
 
 #Start program
 app.mainloop()
